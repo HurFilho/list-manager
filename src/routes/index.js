@@ -8,8 +8,4 @@ router.get('/channels', (req, res, next) => {
     res.json(response);
 });
 
-router.get('/modengo', (req, res, next) => {
-    res.json({ answer: "♥ !!! Eu amo modengo!!! ♥" });
-});
-
 module.exports = router;
