@@ -10,14 +10,15 @@ This project was created to provide API endpoints to the "Gerenciador de tarefas
 ## Available Endpoints
 
 ### CHANNELS
-+ **Path:** /channels
++ **Path:** /api/channels
 + **Method:** GET
 + **Produces:** application/json
 + **Path parameters:** none
 + **Query parameters:** none
+
 + **Response example:** 
 ```
-    [
+[
     {
         "name": "Team 1",
         "channels": [
