@@ -20,10 +20,10 @@ exports.createTeam = (req, res, next) => {
 };
 
 exports.getTeam = (req, res, next) => {
-    Team.find().then(foundTeams => {
+    Team.find().then(teams => {
         res.json({
             message: "All teams",
-            posts: foundTeams
+            teams
         });
     });
 };
