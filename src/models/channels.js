@@ -13,4 +13,4 @@ const channelSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Channel', channelSchema);
+module.exports = mongoose.model('channel', channelSchema); // export the new scheme and the collection name

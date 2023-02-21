@@ -20,7 +20,8 @@ const runServer = (PORT) => {
 mongoose.set('strictQuery', false);
 
 mongoose
-    .connect(`mongodb+srv://api:${MONGO_DATABASE_PASSWORD}@${MONGO_DATABASE_URL}/?retryWrites=true&w=majority`)
+    .connect(`mongodb+srv://api:${MONGO_DATABASE_PASSWORD}@${MONGO_DATABASE_URL}/?retryWrites=true&w=majority`,
+        { dbName: 'lists_db' })
     .then(() => { app.listen(PORT, () => runServer(PORT)); })
     .catch(err => console.log('err', err))
 

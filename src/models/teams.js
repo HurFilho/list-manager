@@ -17,4 +17,4 @@ const teamSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Channel', teamSchema);
+module.exports = mongoose.model('team', teamSchema); // export the new scheme and the collection name
