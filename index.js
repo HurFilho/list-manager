@@ -1,11 +1,14 @@
-const express = require("express");
-const routes = require('./src/routes/channels');
+const dotenv = require('dotenv');
+const express = require('express');
 const mongoose = require('mongoose');
+const routes = require('./src/routes/channels');
 
 const app = express();
-const PORT = process.env.PORT || 4000;
 
-const password = "xhkBU2KGVFIFYX13";
+dotenv.config();
+const PORT = process.env.PORT;
+const MONGO_DATABASE_URL = process.env.MONGO_DATABASE_URL;
+const MONGO_DATABASE_PASSWORD = process.env.MONGO_DATABASE_PASSWORD;
 
 app.use(express.json());
 app.use('/api', routes);
@@ -17,11 +20,8 @@ const runServer = (PORT) => {
 mongoose.set('strictQuery', false);
 
 mongoose
-    .connect(`mongodb+srv://api:${password}@cluster-gerenciador.zvi7idy.mongodb.net/?retryWrites=true&w=majority`
-    )
-    .then(result => {
-        app.listen(PORT, () => runServer(PORT));
-    })
+    .connect(`mongodb+srv://api:${MONGO_DATABASE_PASSWORD}@${MONGO_DATABASE_URL}/?retryWrites=true&w=majority`)
+    .then(() => { app.listen(PORT, () => runServer(PORT)); })
     .catch(err => console.log('err', err))
 
 
