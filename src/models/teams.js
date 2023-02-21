@@ -17,4 +17,4 @@ const teamSchema = new Schema({
     }
 });
 
-module.exports = mongoose.model('team', teamSchema); // export the new scheme and the collection name
+module.exports = mongoose.model('Team', teamSchema); // export the new scheme and the collection name
