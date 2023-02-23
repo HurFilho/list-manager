@@ -1,11 +1,13 @@
-const Team = require('../models/team')
+const Team = require('../models/team');
+const { v4: uuidv4 } = require('uuid');
 
 exports.createTeam = (req, res, next) => {
-    const { name } = req.body;
-    const { channels } = req.body;
+    const { channels, name } = req.body;
+    const _id = uuidv4();
     const team = new Team({
-        name,
-        channels
+        channels,
+        _id,
+        name
     });
     team
         .save()
