@@ -12,6 +12,8 @@ router.get('/teams', teamController.getTeam);
 
 router.post('/teams', teamController.createTeam);
 
+router.delete('/teams', teamController.deleteTeam);
+
 router.post('/channel', channelController.createChannel);
 
 router.delete('/channel', channelController.deleteChannel);
