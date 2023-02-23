@@ -14,4 +14,6 @@ router.post('/teams', teamController.createTeam);
 
 router.post('/channel', channelController.createChannel);
 
+router.delete('/channel', channelController.deleteChannel);
+
 module.exports = router;

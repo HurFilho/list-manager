@@ -18,3 +18,16 @@ exports.createChannel = (req, res, next) => {
         })
         .catch(err => console.log('err', err));
 };
+
+exports.deleteChannel = (req, res, next) => {
+    const { teamId, channelId } = req.body;
+    Team.findOneAndUpdate(
+        { _id: teamId }, { $pull: { channels: { _id: channelId } } },)
+        .then(() => {
+            res.status(201)
+            res.setHeader('Content-Type', 'application/json');
+            res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+            res.json({ message: 'Channel deleted successfully!', });
+        })
+        .catch(err => console.log('err', err));
+};
