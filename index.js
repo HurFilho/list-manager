@@ -7,6 +7,7 @@ const app = express();
 
 dotenv.config();
 const PORT = process.env.PORT;
+const MONGO_DATABASE_NAME = process.env.MONGO_DATABASE_NAME;
 const MONGO_DATABASE_URL = process.env.MONGO_DATABASE_URL;
 const MONGO_DATABASE_PASSWORD = process.env.MONGO_DATABASE_PASSWORD;
 
@@ -20,8 +21,12 @@ const runServer = (PORT) => {
 mongoose.set('strictQuery', false);
 
 mongoose
-    .connect(`mongodb+srv://api:${MONGO_DATABASE_PASSWORD}@${MONGO_DATABASE_URL}/?retryWrites=true&w=majority`,
-        { dbName: 'lists_db' })
+    .connect(`mongodb+srv://api:${MONGO_DATABASE_PASSWORD}@${MONGO_DATABASE_URL}/${MONGO_DATABASE_NAME}?retryWrites=true&w=majority`,
+        {
+            dbName: 'lists_db',
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        })
     .then(() => { app.listen(PORT, () => runServer(PORT)); })
     .catch(err => console.log('err', err))
 

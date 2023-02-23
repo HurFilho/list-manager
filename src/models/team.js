@@ -10,10 +10,6 @@ const teamSchema = new Schema({
     channels: {
         type: Array,
         required: true
-    },
-    id: {
-        type: String,
-        required: true
     }
 });
 

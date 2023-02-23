@@ -1,11 +1,10 @@
-const Team = require('../models/teams')
+const Team = require('../models/team')
 
 exports.createTeam = (req, res, next) => {
     const { name } = req.body;
     const { channels } = req.body;
     const team = new Team({
-        id: new Date().toISOString(),
-        name: name,
+        name,
         channels
     });
     team

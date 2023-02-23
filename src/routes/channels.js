@@ -14,4 +14,6 @@ router.get('/teams', teamController.getTeam);
 
 router.post('/teams', teamController.createTeam);
 
+router.post('/channels', channelController.createChannel);
+
 module.exports = router;
