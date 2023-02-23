@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
-const routes = require('./src/routes/channels');
+const routes = require('./src/routes/routes');
 
 const app = express();
 
