@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ChannelSchema = require('./channel');
 
 const Schema = mongoose.Schema;
 
@@ -7,12 +8,12 @@ const teamSchema = new Schema({
         type: String,
         required: true
     },
-    channels: {
-        type: Array,
-        required: true
-    },
     name: {
         type: String,
+        required: true
+    },
+    channels: {
+        type: [ChannelSchema],
         required: true
     }
 });

@@ -2,15 +2,15 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const channelSchema = new Schema({
-    name: {
+const ChannelSchema = new Schema({
+    _id: {
         type: String,
         required: true
     },
-    id: {
+    name: {
         type: String,
         required: true
     }
 });
 
-module.exports = mongoose.model('Channel', channelSchema); // export the new scheme and the collection name
+module.exports = ChannelSchema;

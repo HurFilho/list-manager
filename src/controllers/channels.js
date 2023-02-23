@@ -1,6 +1,6 @@
-const response = require('../assets/channels.js');
 const { v4: uuidv4 } = require('uuid');
 const Team = require('../models/team.js');
+const response = require('../assets/channels.js');
 
 exports.getChannels = (req, res, next) => {
     res.status = 200;
@@ -11,9 +11,9 @@ exports.getChannels = (req, res, next) => {
 
 exports.createChannel = (req, res, next) => {
     const { name, teamId } = req.body;
-    const id = uuidv4();
+    const _id = uuidv4();
     const channel = {
-        id,
+        _id,
         name
     };
     Team.findOneAndUpdate(
