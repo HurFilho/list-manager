@@ -1,6 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
 const Team = require('../models/team.js');
-const response = require('../assets/channels.js');
 
 exports.createChannel = (req, res, next) => {
     const { name, teamId } = req.body;
