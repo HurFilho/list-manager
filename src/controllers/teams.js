@@ -3,6 +3,7 @@ const { v4: uuidv4 } = require('uuid');
 
 exports.getTeam = (req, res, next) => {
     Team.find().then(teams => {
+        res.set('Access-Control-Allow-Origin', '*');
         res.json({
             message: "All teams",
             teams
