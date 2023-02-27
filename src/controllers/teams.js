@@ -18,8 +18,7 @@ exports.createTeam = (req, res, next) => {
         _id,
         name
     });
-    team
-        .save()
+    team.save()
         .then(teamSaved => {
             res.set(headers.createHeaders());
             res.status(201).json({

@@ -1,4 +1,4 @@
-// const cors = require("cors")
+const cors = require("cors")
 const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -19,7 +19,13 @@ const runServer = (PORT) => {
     console.log(`Server running on port ${PORT}`);
 }
 
-// app.use(cors())
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions))
 
 mongoose.set('strictQuery', false);
 
