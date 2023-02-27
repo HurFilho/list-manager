@@ -6,6 +6,15 @@ const routes = require('./src/routes/routes');
 
 const app = express();
 
+
+const corsOptions = {
+    origin: '*',
+    credentials: true,
+    optionSuccessStatus: 200,
+}
+
+app.use(cors(corsOptions))
+
 dotenv.config();
 const PORT = process.env.PORT;
 const MONGO_DATABASE_NAME = process.env.MONGO_DATABASE_NAME;
@@ -19,13 +28,6 @@ const runServer = (PORT) => {
     console.log(`Server running on port ${PORT}`);
 }
 
-const corsOptions = {
-    origin: '*',
-    credentials: true,
-    optionSuccessStatus: 200,
-}
-
-app.use(cors(corsOptions))
 
 mongoose.set('strictQuery', false);
 
