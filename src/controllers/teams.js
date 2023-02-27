@@ -1,14 +1,13 @@
-const Team = require('../models/team');
 const { v4: uuidv4 } = require('uuid');
+const Team = require('../models/team');
+const createResponse = require('../middlewares/responseHandlers');
+const headers = require('./headers');
 
-exports.getTeam = (req, res, next) => {
-    Team.find().then(teams => {
-        res.set('Access-Control-Allow-Origin', '*');
-        res.json({
-            message: "All teams",
-            teams
-        });
-    });
+
+exports.getTeams = (_, res) => {
+    Team.find()
+        .then(teams => createResponse.handleGetTeams({ res, teams }))
+        .catch(err => createResponse.handleGetTeams({ err }))
 };
 
 exports.createTeam = (req, res, next) => {
@@ -22,12 +21,12 @@ exports.createTeam = (req, res, next) => {
     team
         .save()
         .then(teamSaved => {
+            res.set(headers.createHeaders());
             res.status(201).json({
                 message: 'Team created successfully!',
                 team: teamSaved
             });
         })
-        .catch(err => console.log('err', err));
 };
 
 exports.deleteTeam = (req, res, next) => {
@@ -36,8 +35,7 @@ exports.deleteTeam = (req, res, next) => {
         { _id: teamId })
         .then(() => {
             res.status(201)
-            res.setHeader('Content-Type', 'application/json');
-            res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+            res.set(headers.createHeaders());
             res.json({ message: 'Team deleted successfully!', });
         })
         .catch(err => console.log('err', err));

@@ -1,5 +1,6 @@
 const { v4: uuidv4 } = require('uuid');
 const Team = require('../models/team.js');
+const headers = require('../middlewares/headers');
 
 exports.createChannel = (req, res, next) => {
     const { name, teamId } = req.body;
@@ -10,11 +11,10 @@ exports.createChannel = (req, res, next) => {
     };
     Team.findOneAndUpdate(
         { _id: teamId }, { $push: { channels: channel } },)
-        .then(() => {
+        .then((response) => {
             res.status(201)
-            res.setHeader('Content-Type', 'application/json');
-            res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
-            res.json({ message: 'Channel added successfully!', });
+            res.set(headers.createHeaders());
+            res.json({ message: response ? 'Channel added successfully!' : 'Team not found!', });
         })
         .catch(err => console.log('err', err));
 };
@@ -25,8 +25,7 @@ exports.deleteChannel = (req, res, next) => {
         { _id: teamId }, { $pull: { channels: { _id: channelId } } },)
         .then(() => {
             res.status(201)
-            res.setHeader('Content-Type', 'application/json');
-            res.setHeader('Cache-Control', 's-max-age=1, stale-while-revalidate')
+            res.set(headers.createHeaders());
             res.json({ message: 'Channel deleted successfully!', });
         })
         .catch(err => console.log('err', err));

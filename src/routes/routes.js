@@ -8,7 +8,7 @@ const channelController = require('../controllers/channels');
 
 router.get('/', apiController.getHome);
 
-router.get('/teams', teamController.getTeam);
+router.get('/teams', teamController.getTeams);
 
 router.post('/teams', teamController.createTeam);
 
