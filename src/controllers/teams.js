@@ -1,7 +1,7 @@
 const { v4: uuidv4 } = require('uuid');
 const Team = require('../models/team');
 const createResponse = require('../middlewares/responseHandlers');
-const headers = require('./headers');
+const headers = require('../middlewares/headers');
 
 
 exports.getTeams = (_, res) => {
