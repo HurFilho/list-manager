@@ -6,31 +6,7 @@ This project was created to provide API endpoints to the "Gerenciador de tarefas
 
 * Node.js
 * Express.js
-
-## Available Endpoints
-
-### CHANNELS
-+ **Path:** /api/channels
-+ **Method:** GET
-+ **Produces:** application/json
-+ **Path parameters:** none
-+ **Query parameters:** none
-
-+ **Response example:** 
-```
-[
-    {
-        "name": "Team 1",
-        "channels": [
-            {
-                "name": "Channel 1",
-                "id": 1
-            },
-            {
-                "name": "Channel 2",
-                "id": 2
-            }
-        ]
-    }
-]
-```
+* Mongoose
+* nocors
+* dotenv
+* uuid
