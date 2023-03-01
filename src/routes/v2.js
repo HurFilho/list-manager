@@ -14,8 +14,8 @@ router.post('/lists', listsController.createList);
 
 router.delete('/lists', listsController.deleteList);
 
-router.post('/items', itemsController.createItem);
+router.post('/item', itemsController.createItem);
 
-router.delete('/items', itemsController.deleteItem);
+router.delete('/item', itemsController.deleteItem);
 
 module.exports = router;

@@ -12,21 +12,29 @@ exports.createItem = (req, res, next) => {
     List.findOneAndUpdate(
         { _id: listId }, { $push: { items: item } },)
         .then((response) => {
-            res.status(201)
+            res.status(response ? 201 : 404);
             res.set(headers.createHeaders());
             res.json({ message: response ? 'Item added successfully!' : 'List not found!', });
         })
         .catch(err => console.log('err', err));
 };
 
-exports.deleteItem = (req, res, next) => {
+exports.deleteItem = async (req, res, next) => {
     const { listId, itemId } = req.body;
-    List.findOneAndUpdate(
-        { _id: listId }, { $pull: { items: { _id: itemId } } },)
-        .then(() => {
-            res.status(200)
-            res.set(headers.createHeaders());
-            res.json({ message: 'Item deleted successfully!', });
-        })
-        .catch(err => console.log('err', err));
+    const query = await List.find({ _id: listId });
+    foundItem = (query[0].items.some(({ _id }) => _id === itemId));
+    if (foundItem) {
+        List.findOneAndUpdate(
+            { _id: listId }, { $pull: { items: { _id: itemId } } },)
+            .then(() => {
+                res.status(200)
+                res.set(headers.createHeaders());
+                res.json({ message: 'Item deleted successfully!', });
+            })
+            .catch(err => console.log('err', err));
+    } else {
+        res.status(404)
+        res.set(headers.createHeaders());
+        res.json({ message: 'No item found!', });
+    }
 };

@@ -37,7 +37,7 @@ exports.deleteList = (req, res, next) => {
         .then(({ deletedCount }) => {
             res.status(deletedCount ? 200 : 406)
             res.set(headers.createHeaders());
-            res.json({ message: deletedCount ? 'List deleted successfully!' : "No list were deleted", });
+            res.json({ message: deletedCount ? 'List deleted successfully!' : "No list found with given listId!", });
         })
         .catch(err => console.log('err', err));
 };
