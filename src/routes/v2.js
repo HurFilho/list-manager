@@ -10,12 +10,12 @@ router.get('/', apiController.getHome);
 
 router.get('/lists', listsController.getLists);
 
-router.post('/lists', listsController.createLists);
+router.post('/lists', listsController.createList);
 
-router.delete('/lists', teamController.deleteLists);
+router.delete('/lists', listsController.deleteList);
 
-router.post('/items', itemsController.createItems);
+router.post('/items', itemsController.createItem);
 
-router.delete('/items', itemsController.deleteItems);
+router.delete('/items', itemsController.deleteItem);
 
 module.exports = router;
