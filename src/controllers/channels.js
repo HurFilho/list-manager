@@ -24,7 +24,7 @@ exports.deleteChannel = (req, res, next) => {
     Team.findOneAndUpdate(
         { _id: teamId }, { $pull: { channels: { _id: channelId } } },)
         .then(() => {
-            res.status(201)
+            res.status(200)
             res.set(headers.createHeaders());
             res.json({ message: 'Channel deleted successfully!', });
         })

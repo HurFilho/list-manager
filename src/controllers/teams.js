@@ -33,7 +33,7 @@ exports.deleteTeam = (req, res, next) => {
     Team.deleteOne(
         { _id: teamId })
         .then(() => {
-            res.status(201)
+            res.status(200)
             res.set(headers.createHeaders());
             res.json({ message: 'Team deleted successfully!', });
         })
