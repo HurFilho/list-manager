@@ -7,7 +7,6 @@ const headers = require('../middlewares/headers');
 exports.getLists = (_, res) => {
     List.find()
         .then(lists => {
-            console.log(lists)
             createResponse.handleGetLists({ res, lists })
         })
         .catch(err => createResponse.handleGetLists({ err }))
