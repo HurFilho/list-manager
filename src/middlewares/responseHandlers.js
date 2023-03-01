@@ -9,5 +9,15 @@ exports.handleGetTeams = ({ res, teams, err }) => {
     else {
         res.set(headers.createHeaders());
         res.json(responses.getTeamResponse(teams));
+    };
+};
+
+exports.handleGetLists = ({ res, teams, err }) => {
+    if (err) {
+        errors.getListError(err);
     }
-}
+    else {
+        res.set(headers.createHeaders());
+        res.json(responses.getListResponse(teams));
+    }
+};

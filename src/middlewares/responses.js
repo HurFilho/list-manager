@@ -6,4 +6,14 @@ exports.getTeamResponse = (teams) => {
     };
     if (teams.length) { response.teams = teams };
     return response;
-}
+};
+
+exports.getListResponse = (list) => {
+    const response = {
+        message: list.length ? `All list` : "No list was found",
+        quantity: list.length,
+        empty: !list.length,
+    };
+    if (list.length) { response.list = list };
+    return response;
+};

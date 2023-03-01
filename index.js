@@ -2,7 +2,8 @@ const cors = require("cors")
 const dotenv = require('dotenv');
 const express = require('express');
 const mongoose = require('mongoose');
-const routes = require('./src/routes/routes');
+const routes_v1 = require('./src/routes/v1');
+const routes_v2 = require('./src/routes/v2');
 
 const app = express();
 
@@ -22,7 +23,8 @@ const MONGO_DATABASE_URL = process.env.MONGO_DATABASE_URL;
 const MONGO_DATABASE_PASSWORD = process.env.MONGO_DATABASE_PASSWORD;
 
 app.use(express.json());
-app.use('/api', routes);
+app.use('/api/v1', routes_v1);
+app.use('/api/v2', routes_v2);
 
 const runServer = (PORT) => {
     console.log(`Server running on port ${PORT}`);
