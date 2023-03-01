@@ -10,11 +10,10 @@ exports.getTeamResponse = (teams) => {
 
 exports.getListResponse = (list) => {
     const response = {
-        message: list?.length ? `All list` : "No list was found",
+        message: list?.length ? "All lists" : "No list was found",
         quantity: list?.length || 0,
         empty: !list?.length,
     };
-    console.log(response)
     if (list?.length) { response.list = list };
     return response;
 };

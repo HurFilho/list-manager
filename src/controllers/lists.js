@@ -6,7 +6,10 @@ const headers = require('../middlewares/headers');
 
 exports.getLists = (_, res) => {
     List.find()
-        .then(lists => { createResponse.handleGetLists({ res, lists }) })
+        .then(lists => {
+            console.log(lists)
+            createResponse.handleGetLists({ res, lists })
+        })
         .catch(err => createResponse.handleGetLists({ err }))
 };
 
@@ -32,10 +35,10 @@ exports.deleteList = (req, res, next) => {
     const { listId } = req.body;
     List.deleteOne(
         { _id: listId })
-        .then(() => {
-            res.status(200)
+        .then(({ deletedCount }) => {
+            res.status(deletedCount ? 200 : 406)
             res.set(headers.createHeaders());
-            res.json({ message: 'List deleted successfully!', });
+            res.json({ message: deletedCount ? 'List deleted successfully!' : "No list were deleted", });
         })
         .catch(err => console.log('err', err));
 };
