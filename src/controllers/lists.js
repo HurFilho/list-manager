@@ -6,16 +6,16 @@ const headers = require('../middlewares/headers');
 
 exports.getLists = (_, res) => {
     List.find()
-        .then(lists => createResponse.handleGetLists({ res, lists }))
+        .then(lists => { createResponse.handleGetLists({ res, lists }) })
         .catch(err => createResponse.handleGetLists({ err }))
 };
 
 exports.createList = (req, res, next) => {
-    const { channels, name } = req.body;
+    const { items, name } = req.body;
     const _id = uuidv4();
     const list = new List({
-        channels,
         _id,
+        items,
         name
     });
     list.save()

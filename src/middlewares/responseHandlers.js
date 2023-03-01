@@ -12,12 +12,12 @@ exports.handleGetTeams = ({ res, teams, err }) => {
     };
 };
 
-exports.handleGetLists = ({ res, teams, err }) => {
+exports.handleGetLists = ({ res, list, err }) => {
     if (err) {
         errors.getListError(err);
     }
     else {
         res.set(headers.createHeaders());
-        res.json(responses.getListResponse(teams));
+        res.json(responses.getListResponse(list));
     }
 };

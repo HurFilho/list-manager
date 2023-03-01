@@ -3,7 +3,7 @@ const ItemSchema = require('./item');
 
 const Schema = mongoose.Schema;
 
-const listSchema = new Schema({
+const ListSchema = new Schema({
     _id: {
         type: String,
         required: true
@@ -12,10 +12,10 @@ const listSchema = new Schema({
         type: String,
         required: true
     },
-    channels: {
+    items: {
         type: [ItemSchema],
         required: true
     }
 });
 
-module.exports = mongoose.model('List', listSchema); // export the new scheme and the collection name
+module.exports = mongoose.model('List', ListSchema); // export the new scheme and the collection name
