@@ -8,12 +8,12 @@ exports.getTeamResponse = (teams) => {
     return response;
 };
 
-exports.getListResponse = (list) => {
+exports.getListResponse = (list = []) => {
     const response = {
-        message: list?.length ? "All lists" : "No list was found",
-        quantity: list?.length || 0,
-        empty: !list?.length,
+        message: list.length ? "All lists" : "No list was found",
+        quantity: list.length || 0,
+        empty: !list.length,
     };
-    if (list?.length) { response.list = list };
+    if (list.length) { response.list = list };
     return response;
 };
